@@ -3,10 +3,21 @@
 Example code for cubic input and improved arcade control. This only supports
 symetric funcitons
 
-NOTE: `func_tab` must be defined as:
+You can use functab.html to generate a static function.
+
+func_tab may be defined as:
 ```c
 int func_tab[128];
+...
+changefunc(func_tab, <POWER>);
 ```
+Or as:
+```c
+const int func_tab[128] = {
+<OUTPUT FROM functab.html>
+};
+```
+
 
 ## Documentation
 
@@ -23,7 +34,7 @@ Generates a power function in the table func_tab. Returns func_tab.
 ```c
 int turn(int forward, int turn);
 ```
-Computes arcade drive output value from the forward value [-127, 127] and the turn value [-127, 127]. Returns motor value [-127, 127]. Tries to maintain maximum speed, full forward is 127.
+Computes arcade drive output value from the `forward` value [-127, 127] and the `turn` value [-127, 127]. Returns motor value [-127, 127]. Tries to maintain maximum speed, full forward is 127.
 
 To compute the left motor, where positive `turn` value means turn right. Use `turn(forward, turn)`
 
