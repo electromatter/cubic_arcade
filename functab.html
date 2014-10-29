@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>head</title>
+</head>
+<body>
+<script>
+
+function pad(str, len, padding)
+{
+	str = str.toString()
+	if (str.length >= len)
+		return str.substr(0, len);
+	return new Array(len - str.length + 1).join(padding) + str;
+}
+
+function gen(power)
+{
+	out = document.getElementById("output");
+	out.innerHTML = "";
+	for (i = 0; i < 128; i++) {
+		val = Math.pow(i / 127.0, power);
+		out.innerHTML += pad(Math.round(val * 127), 3, " ") + ", ";
+		if (i % 16 == 15)
+			out.innerHTML += "<br>";
+	}
+}
+</script>
+
+<form>
+power: <input type="text" id="power" value="1.0">
+<input type="button" value="Generate" onclick="gen(this.parentNode.power.value)">
+</form>
+
+<pre id="output">
+</pre>
+</body>
+</html>
